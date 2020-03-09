@@ -71,6 +71,7 @@ fi
 if [ -d "${pth}/.git" ]; then
   $shx "git pull --rebase --stat origin master"
 else
+  [ -d "$pth/docker-registry" ] && $shx "yes | rm -vfr $pth/docker-registry"
   $shx "git clone -b master --single-branch https://github.com/asumikamikaze/docker-registry.git"
   cd docker-registry
   pth="$(pwd)"
