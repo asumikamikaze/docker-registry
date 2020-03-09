@@ -1,0 +1,50 @@
+# Author: Alejandro M. BERNARDIS
+# Email: alejandro.bernardis at gmail.com
+# Created: 2019/11/11 10:49
+
+version: 0.1
+
+log:
+  accesslog:
+    disabled: false
+  level: debug
+  formatter: json
+  fields:
+    service: registry
+    environment: staging
+
+storage:
+  cache:
+    blobdescriptor: redis
+  filesystem:
+    rootdirectory: /var/lib/registry
+    maxthreads: 100
+  delete:
+    enabled: true
+
+health:
+  storagedriver:
+    enabled: true
+    interval: 10s
+    threshold: 3
+
+auth:
+  htpasswd:
+    realm: Registry Realm
+    path: /auth/htpasswd
+
+http:
+  addr: :5000
+  secret: 'S3cret!-%Registry=='
+  headers:
+    X-Content-Type-Options: [nosniff]
+
+redis:
+  db: 0
+  dialtimeout: 10ms
+  readtimeout: 10ms
+  writetimeout: 10ms
+  pool:
+    maxidle: 16
+    maxactive: 64
+    idletimeout: 300s
