@@ -24,23 +24,20 @@ Todas las ejecuciones sobre el `shell` se definen de la siguiente manera:
 > [command] ...
 ```
 
-El signo `mayor` (`>`) **NO** se debe incluir, éste indica que la línea debe
-ser ejecutada dentro del contexto de un `shell`.
+El signo `mayor` (`>`) **NO** se debe incluir, éste indica que la línea debe ser ejecutada dentro del contexto de un `shell`.
 
 # :coffee: REGISTRY
 
 ## Repositorio
 
-El proyecto se gestiona a partir de repositorio de tipo `git`, que se ecuentra
-en la siguiente `url`:
+El proyecto se gestiona a partir de repositorio de tipo `git`, que se ecuentra en la siguiente `url`:
 
-https://github.com/alejandrobernardis/docker-registry
+https://github.com/asumikamikaze/docker-registry
 
-Para realizar el despliegue, **clonamos** el repositorio en modo
-**sólo lectura**:
+Para realizar el despliegue **clonamos** el repositorio dentro del servidor que posea `docker`:
 
 ```bash
-> git clone https://github.com/alejandrobernardis/docker-registry.git
+> git clone https://github.com/asumikamikaze/docker-registry.git
 ```
 
 ## Estructura del Repositorio
@@ -60,8 +57,7 @@ Para realizar el despliegue, **clonamos** el repositorio en modo
 ```
 
 * **master**: configuración de la `registry`
-    * **auth**: configuración de la `autenticación`, el archivo `htpasswd`
-    contiene todos los usuarios y contraseñas permitidos en la `registry`.
+    * **auth**: configuración de la `autenticación`, el archivo `htpasswd` contiene todos los usuarios y contraseñas permitidos en la `registry`.
     * **cache**: persistencia del `cache` mediante `redis`.
     * **data**: persistencia de los `repositorios`.
     * **config.yml**: configuración base.
@@ -70,27 +66,21 @@ Para realizar el despliegue, **clonamos** el repositorio en modo
 
 > :warning: **ADVERTENCIA**
 >
-> Dentro de la estructura se encuentra un archivo llamado `installer.sh`, al
-ejecutarlo, éste eliminará todo el contenido del directorio
-`/data/registry/master`.
+> Dentro de la estructura se encuentra un archivo llamado `installer.sh`, al ejecutarlo, éste eliminará todo el contenido del directorio `/data/registry/master`.
 >
 > La ejecución del mismo será resonsabilidad de quién lo haga.
 
 ### Compose File
 
-Definición de los servicios a desplegar mediante la utilidad `docker-compose`,
-para mayor información visitar la documentación oficial:
-https://docs.docker.com/registry/deploying/
+Definición de los servicios a desplegar mediante la utilidad `docker-compose`, para mayor información visitar la documentación oficial: https://docs.docker.com/registry/deploying/
 
 El archivo define básicamente 3 servicios:
 
-* **master** (registry) definición de la `registry`.
+* **master** (`registry`) definición de la `registry`.
     * https://hub.docker.com/_/registry
-* **master_cache** (redis) implementación de un `cache` mediante el uso de
-`redis`.
+* **master_cache** (`redis`) implementación de un `cache` mediante el uso de `redis`.
     * https://hub.docker.com/_/redis
-* **master_web** (registry-browser) interfaz web para la exploración del
-contenido de la `registry`.
+* **master_web** (`registry-browser`) interfaz web para la exploración del contenido de la `registry`.
     * https://hub.docker.com/r/klausmeyer/docker-registry-browser/
 
 ```yaml
@@ -129,8 +119,7 @@ networks:
 
 ### Env (environment) File
 
-Definición de los valores globales de la configuración del archivo
-`docker-compose.yml`.
+Definición de los valores globales de la configuración del archivo `docker-compose.yml`.
 
 ```bash
 # WARNING! no editar.
@@ -152,9 +141,7 @@ REDIS_PASSWORD=***
 
 ### Config File
 
-La definicón de este archivo apunta a establecer una configuración base para
-el despliegue de la `registry`, para mayor información visitar la documentación
-oficial: https://docs.docker.com/registry/configuration/
+La definicón de este archivo apunta a establecer una configuración base para el despliegue de la `registry`, para mayor información visitar la documentación oficial: https://docs.docker.com/registry/configuration/
 
 ```yaml
 version: 0.1
@@ -190,9 +177,7 @@ redis:
 
 ## Usuarios
 
-La gestión de las crendenciales se realiza mediante la utilidad de apache
-`htpasswd`, para mayor información visitar la documentación oficial:
-https://httpd.apache.org/docs/current/programs/htpasswd.html
+La gestión de las crendenciales se realiza mediante la utilidad de apache `htpasswd`, para mayor información visitar la documentación oficial: https://httpd.apache.org/docs/current/programs/htpasswd.html
 
 ### Creación de un usuario
 
@@ -258,11 +243,9 @@ Verificación de los usuarios habilitados:
 
 ## Docker compose modo compatibilidad
 
-Se requiere la verisón `1.20.0+`, para mayor información visitar la
-documentación oficial: https://docs.docker.com/compose/compose-file/compose-versioning/#compatibility-mode
+Se requiere la verisón `1.20.0+`, para mayor información visitar la documentación oficial: https://docs.docker.com/compose/compose-file/compose-versioning/#compatibility-mode
 
-> `docker-compose` 1.20.0 introduces a new `--compatibility` flag designed to
-help developers transition to version 3 more easily. ...
+> `docker-compose` 1.20.0 introduces a new `--compatibility` flag designed to help developers transition to version 3 more easily. ...
 
 ```bash
 # verificamos la versión

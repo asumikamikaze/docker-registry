@@ -1,8 +1,12 @@
 #!/bin/bash
-# Author: Alejandro M. BERNARDIS
-# Email: alejandro.bernardis at gmail.com
-# Created: 2019/11/11 10:49
-
+# --
+# ak | Docker Registry for Development v1.0
+#
+# Author(s):
+#   - Alejandro M. BERNARDIS <ambernardis at asumikamikaze.com>
+#   - Gabriel H. CETRARO <ghcetraro at asumikamikaze.com>
+# Created: 2020-03-08
+# ~
 set -e
 
 # colors
@@ -32,65 +36,93 @@ error_and_exit() {
   exit $code
 }
 
-# welcome
-echo "${GREEN_BULLET}${CYAN}${BOLD}REGISTRY INSTALLER v1.0 (pichu)${RESET}"
+# verifica si el comando existe
+command_exists() {
+  command -v "$@" > /dev/null 2>&1
+}
 
-# verificamos que el script se ejecute como root
-[ "$(id -u)" -eq "0" ] \
-  || error_and_exit "run script with ${BOLD}\"root\"${ERROR_RESET} user" 1
+# welcome
+echo "${GREEN_BULLET}${CYAN}${BOLD}REGISTRY INSTALLER v1.0${RESET}"
 
 # verificamos los comandos principales
-for cmd in docker docker-compose htpasswd git; do
-  if ! command -v $cmd &> /dev/null; then
+for cmd in git curl docker docker-compose; do
+  if ! command_exists $cmd; then
     error_and_exit "command ${BOLD}\"$cmd\"${ERROR_RESET} not found" 2
   fi
 done
 
+# definimos el contexto de ejecución
+shx="sh -c"
+pth="$(pwd)"
+dst=/data/registry/master
+pss="${dst}/auth/htpasswd"
+dco="docker-compose --log-level ERROR"
+
+# verificamos que el script se ejecute como root
+if [ "$(id -un 2>/dev/null || true)" != "root" ]; then
+  if command_exists sudo; then
+    shx="sudo -E sh -c"
+  elif command_exists su; then
+    shx="su -c"
+  else
+    error_and_exit "this installer needs the ability to run commands as ${BOLD}\"root\"${ERROR_RESET}." 1
+  fi
+fi
+
 # actualizamos el repositorio
-git pull --rebase --stat origin master
-
-# base path
-_base_path="$(pwd)/master"
-
-# creamos los directorios
-mkdir -p $_base_path/{auth,cache,certs,data}
-
-# punto de control
-if [ -z "$(ls -A ${_base_path}/data)" ]; then
-  echo "
-${YELLOW_BULLET}${YELLOW} El directorio ${BOLD}\"${_base_path}/data\"${RESET}${YELLOW}
-    no se encuentra vacío, en el proceso
-    de instalación éste será borrado.
-"
-  echo -n "${CYAN_BULLET} Desea continuar (N/y): ${RESET}"
-  read answer
-  [ "${answer}" == "y" ] || exit -1
-  echo ""
+if [ -d "${pth}/.git" ]; then
+  $shx "git pull --rebase --stat origin master"
+else
+  $shx "git clone -b master --single-branch https://github.com/asumikamikaze/docker-registry.git"
+  $shx "cd docker-registry"
+  pth="$(pwd)"
 fi
 
 # verificamos que nada este deplegado
-! (docker-compose ps -q &> /dev/null) \
-  || docker-compose down
+! ($shx "$dco ps -q &> /dev/null") \
+  || $shx "$dco down"
 
-# purgamos los archivos en caso de existir
-yes | rm -fr $_base_path/auth/* $_base_path/cache/* $_base_path/data/*
+# punto de control
+if [ ! -z "$(ls -AR ${dst})" ]; then
+  echo "${YELLOW_BULLET}${YELLOW} the ${BOLD}'${pth}/data'${RESET}${YELLOW}
+    directory is not empty, in the installation
+    process it will be deleted."
+  echo -n "${CYAN_BULLET} Continue (N/y): ${RESET}"
+  read answer
+  [ "$answer" == "y" ] || exit -1
+  echo ""
+fi
 
-# creamos los usuarios para acceder a la registry
-htpasswd_file="${_base_path}/auth/htpasswd"
-touch $htpasswd_file
-htpasswd -bB $htpasswd_file admin y34r2.19g=
-# htpasswd -bB $htpasswd_file user0001 P4sW0r.1
-# htpasswd -bB $htpasswd_file user0002 P4sW0r.2
+# regeneramos la estructura de directorios
+$shx "yes | rm -vfr $dst"
+$shx "mkdir -vp $dst/{auth,cache,certs,data}"
+$shx "yes | cp -vf $pth/master/config.yml $dst/."
+$shx "yes | cp -vf $pth/docker-compose.yml $dst/."
+$shx "yes | cp -vf $pth/.env $dst/."
+$shx "touch $pss"
 
 # creamos la red para la registry
-(docker network inspect registry &> /dev/null) \
-  || docker network create --subnet=172.100.0.0/24 --driver=bridge registry
+($shx "docker network inspect registry &> /dev/null") \
+  || $shx "docker network create --subnet=172.100.0.0/24 --driver=bridge registry"
 
 # desplegamos
-docker-compose --compatibility up -d
+$shx "$dco --compatibility up -d"
+
+# creamos los usuarios
+check_times=0
+while :
+do
+  if ($shx "$dco ps -q master &> /dev/null"); then
+    $shx "$dco exec master htpasswd -Bbn admin admin > $pss"
+    break
+  fi
+  [ $check_times -gt 9 ] && break
+  ((check_times++))
+  sleep 5
+done
 
 # reparamos los permisos del directorio
-chgrp -R docker "$(pwd)"
+$shx "chgrp -R docker $dst"
 
 # au revoir
 [ $? -eq 0 ] && echo "${GREEN}${BOLD}Done.${RESET}"

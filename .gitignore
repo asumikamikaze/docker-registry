@@ -1,3 +1,6 @@
+# osx
+.DS_*
+
 # Windows thumbnail cache files
 Thumbs.db
 Thumbs.db:encryptable
