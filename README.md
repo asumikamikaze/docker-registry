@@ -5,6 +5,7 @@ Configuración de una `registry` privada para `desarrollo`.
 ## Index
 
 * **[Registry](#rotating_light-importante-rotating_light)**
+    * **[Instalación](#instalacion)**
     * **[Repositorio](#repositorio)**
     * **[Estructura del Repositorio](#estructura-del-repositorio)**
         * [Compose File](#compose-file)
@@ -27,6 +28,26 @@ Todas las ejecuciones sobre el `shell` se definen de la siguiente manera:
 El signo `mayor` (`>`) **NO** se debe incluir, éste indica que la línea debe ser ejecutada dentro del contexto de un `shell`.
 
 # :coffee: REGISTRY
+
+## Instalación
+
+Puedes iniciar la instalción vía línea de comando mendiante el uso de `curl` o `wget`.
+
+**Vía `curl`:**
+
+```bash
+> sh -c "$(curl -fsSL https://raw.githubusercontent.com/asumikamikaze/docker-registry/master/installer.sh)"
+```
+
+**Vía `wget`:**
+
+```bash
+> sh -c "$(wget https://raw.githubusercontent.com/asumikamikaze/docker-registry/master/installer.sh -O -)"
+```
+
+> :warning: **REQUERIMIENTO:** `curl` o `wget`
+>
+> Instalación `yum install [curl|wget]`.
 
 ## Repositorio
 
