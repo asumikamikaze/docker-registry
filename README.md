@@ -213,7 +213,7 @@ Adding password for user <username>
 Utilizando `docker-compose`:
 
 ```bash
-> docker-compose exec master htpasswd -Bbn <username> <password> > /data/registry/master/auth/htpasswd
+> docker-compose exec master htpasswd -Bbn <username> <password> >> /data/registry/master/auth/htpasswd
 ```
 
 ### Eliminación de un usuario
