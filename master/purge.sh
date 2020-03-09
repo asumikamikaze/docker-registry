@@ -66,7 +66,7 @@ if [ "$(id -un 2>/dev/null || true)" != "root" ]; then
 fi
 
 # purgamos la registry
-$shx "$dco exec -ti master sh -c /bin/registry garbage-collect --dry-run /etc/docker/registry/config.yml"
+$shx "$dco exec -ti master sh -c '/bin/registry garbage-collect --dry-run /etc/docker/registry/config.yml'"
 
 # au revoir
 [ $? -eq 0 ] && echo "${GREEN}${BOLD}Done.${RESET}"
