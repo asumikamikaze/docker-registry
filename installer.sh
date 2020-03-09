@@ -47,7 +47,7 @@ echo "${GREEN_BULLET}${CYAN}${BOLD}REGISTRY INSTALLER v1.0${RESET}"
 # verificamos los comandos principales
 for cmd in git curl docker docker-compose; do
   if ! command_exists $cmd; then
-    error_and_exit "command ${BOLD}\"$cmd\"${ERROR_RESET} not found" 2
+    error_and_exit "command ${BOLD}\"$cmd\"${ERROR_RESET} not found" 1
   fi
 done
 
@@ -65,7 +65,7 @@ if [ "$(id -un 2>/dev/null || true)" != "root" ]; then
   elif command_exists su; then
     shx="su -c"
   else
-    error_and_exit "this installer needs the ability to run commands as ${BOLD}\"root\"${ERROR_RESET}." 1
+    error_and_exit "this installer needs the ability to run commands as ${BOLD}\"root\"${ERROR_RESET}." 2
   fi
 fi
 
@@ -89,7 +89,7 @@ if [ ! -z "$(ls -AR ${dst})" ]; then
     process it will be deleted."
   echo -n "${CYAN_BULLET} Continue (N/y): ${RESET}"
   read answer
-  [ "$answer" == "y" ] || exit -1
+  [ "$answer" == "y" ] || error_and_exit "Good bye." 3
   echo ""
 fi
 
