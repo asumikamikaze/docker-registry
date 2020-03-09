@@ -189,6 +189,12 @@ Re-type new password:
 Adding password for user <username>
 ```
 
+Utilizando `docker-compose`:
+
+```bash
+> docker-compose exec master htpasswd -Bbn admin admin > /data/registry/master/auth/htpasswd
+```
+
 ### Eliminación de un usuario
 
 ```bash
@@ -201,7 +207,7 @@ Deleting password for user <username>
 
 | **username** | **password** |
 | --- | --- |
-| **admin** | `y34r2.19g=` |
+| **admin** | `admin` |
 | **...** | `...` |
 
 Verificación de los usuarios habilitados:
