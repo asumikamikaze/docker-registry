@@ -54,8 +54,6 @@ done
 # definimos el contexto de ejecución
 shx="sh -c"
 pth="$(pwd)"
-dst=/data/registry/master
-pss="${dst}/auth/htpasswd"
 dco="docker-compose --log-level ERROR"
 
 # verificamos que el script se ejecute como root
@@ -77,6 +75,17 @@ else
   cd docker-registry
   pth="$(pwd)"
 fi
+
+# cargamos las variables de entorno
+src_env=$pth/.env
+
+if [ -f $src_env ]; then
+  source $src_env
+fi
+
+# definimos el directorio destino
+dst=${BASEPATH:-"/data/registry/master"}
+pss="${dst}/auth/htpasswd"
 
 # verificamos que nada este deplegado
 ! ($shx "$dco ps -q &> /dev/null") \
