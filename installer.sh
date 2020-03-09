@@ -78,7 +78,6 @@ fi
 
 # cargamos las variables de entorno
 src_env=$pth/.env
-
 if [ -f $src_env ]; then
   source $src_env
 fi
@@ -92,7 +91,7 @@ pss="${dst}/auth/htpasswd"
   || $shx "$dco down"
 
 # punto de control
-if [ ! -z "$(ls -AR ${dst})" ]; then
+if [ ! -z "$(ls -AR $dst)" ]; then
   echo "${YELLOW_BULLET}${YELLOW} the ${BOLD}'${pth}/data'${RESET}${YELLOW}
     directory is not empty, in the installation
     process it will be deleted."
