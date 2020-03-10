@@ -248,6 +248,7 @@ Verificación de los usuarios habilitados:
 ## Iniciar los servicios
 
 ```bash
+> cd /data/registry/master
 > docker-compose --compatibility up -d
 ```
 
@@ -256,12 +257,14 @@ Verificación de los usuarios habilitados:
 ## Detener los servicios
 
 ```bash
+> cd /data/registry/master
 > docker-compose down
 ```
 
 ## Visualizar los servicios
 
 ```bash
+> cd /data/registry/master
 > docker-compose ps
 ```
 
@@ -296,6 +299,7 @@ Se requiere la verisón `1.20.0+`, para mayor información visitar la documentac
 ### Purgar
 
 ```bash
+> cd /data/registry/master
 > docker-compose exec master sh -c "/bin/registry garbage-collect --dry-run /etc/docker/registry/config.yml"
 ```
 
@@ -306,6 +310,7 @@ Se requiere la verisón `1.20.0+`, para mayor información visitar la documentac
 ### Ver la configuración
 
 ```bash
+> cd /data/registry/master
 > docker-compose exec master sh -c "cat /etc/docker/registry/config.yml"
 ```
 
