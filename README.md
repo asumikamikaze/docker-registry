@@ -35,7 +35,7 @@ Puedes iniciar la instalción vía línea de comando mendiante el uso de `curl` 
 
 > :warning: **ADVERTENCIA**
 >
-> Dentro de la estructura se encuentra un archivo llamado `installer.sh`, al ejecutarlo, éste eliminará todo el contenido del directorio `/data/registry/master`.
+> Al ejecutar el instalador, éste eliminará todo el contenido del directorio `/data/registry/master`.
 >
 > La ejecución del mismo será resonsabilidad de quién lo haga.
 
