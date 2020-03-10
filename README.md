@@ -314,13 +314,13 @@ Se requiere la verisón `1.20.0+`, para mayor información visitar la documentac
 > docker-compose exec master sh -c "cat /etc/docker/registry/config.yml"
 ```
 
-## Configurar la registry en modo inseguro (scosta01 y scosta02)
+## Configurar la registry en modo inseguro
 
 ```bash
 > nano /etc/docker/daemon.json
 ```
 
-Agregar la siguiente línea:
+Agregar la siguiente línea, asuimiendo que `hostname.local` es nuestro hostname y `192.168.1.100` la ip a la que apunta:
 
 ```json
 {
