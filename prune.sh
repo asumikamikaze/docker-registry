@@ -61,7 +61,7 @@ if [ "$(id -un 2>/dev/null || true)" != "root" ]; then
   elif command_exists su; then
     shx="su -c"
   else
-    error_and_exit "this installer needs the ability to run commands as ${BOLD}\"root\"${ERROR_RESET}." 2
+    error_and_exit "This installer needs the ability to run commands as ${BOLD}\"root\"${ERROR_RESET}." 2
   fi
 fi
 

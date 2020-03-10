@@ -81,7 +81,7 @@ Para realizar el despliegue **clonamos** el repositorio dentro del servidor que 
   │   ├── .env
   │   ├── config.yml
   │   ├── docker-compose.yml
-  │   └── purge.sh
+  │   └── prune.sh
 
 ```
 
@@ -92,7 +92,7 @@ Para realizar el despliegue **clonamos** el repositorio dentro del servidor que 
     * **.env**: configuración de las `variables de entorno` a desplegar.
     * **config.yml**: configuración base.
     * **docker-compose.yml**: configuración de los `servicios` a desplegar.
-    * **purge.sh**: utilida para el purgado de la `registry`.
+    * **prune.sh**: utilida para el purgado de la `registry`.
 
 ### Compose File
 
