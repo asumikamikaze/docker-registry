@@ -320,7 +320,7 @@ Se requiere la verisón `1.20.0+`, para mayor información visitar la documentac
 > nano /etc/docker/daemon.json
 ```
 
-Agregar la siguiente línea, asuimiendo que `hostname.local` es nuestro hostname y `192.168.1.100` la ip a la que apunta:
+Agregar la siguiente línea, asuimiendo que `hostname.local` es nuestro **Hostname** y `192.168.1.100` la **IP** a la que apunta:
 
 ```json
 {
