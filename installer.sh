@@ -106,8 +106,8 @@ fi
 $shx "yes | rm -vfr $dst"
 $shx "mkdir -vp $dst/{auth,cache,certs,data}"
 $shx "yes | cp -vf $pth/master/* $dst/"
-$shx "yes | cp -vf $pth/docker-compose.yml $dst/"
-$shx "yes | cp -vf $pth/.env $dst/"
+$shx "yes | cp -vf $pth/docker-compose.yml $dst/.."
+$shx "yes | cp -vf $pth/.env $dst/.."
 $shx "touch $pss"
 
 # creamos la red para la registry

@@ -293,7 +293,7 @@ Se requiere la verisón `1.20.0+`, para mayor información visitar la documentac
 ### Purgar
 
 ```bash
-> docker exec -ti registry_master_1 sh -c "/bin/registry garbage-collect --dry-run /etc/docker/registry/config.yml"
+> docker-compose exec master sh -c "/bin/registry garbage-collect --dry-run /etc/docker/registry/config.yml"
 ```
 
 > **Leer:**
@@ -303,7 +303,7 @@ Se requiere la verisón `1.20.0+`, para mayor información visitar la documentac
 ### Ver la configuración
 
 ```bash
-> docker exec -ti registry_master_1 sh -c "cat /etc/docker/registry/config.yml"
+> docker-compose exec master sh -c "cat /etc/docker/registry/config.yml"
 ```
 
 ## Configurar la registry en modo inseguro (scosta01 y scosta02)
