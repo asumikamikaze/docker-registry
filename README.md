@@ -33,6 +33,12 @@ El signo `mayor` (`>`) **NO** se debe incluir, éste indica que la línea debe s
 
 Puedes iniciar la instalción vía línea de comando mendiante el uso de `curl` o `wget`.
 
+> :warning: **ADVERTENCIA**
+>
+> Dentro de la estructura se encuentra un archivo llamado `installer.sh`, al ejecutarlo, éste eliminará todo el contenido del directorio `/data/registry/master`.
+>
+> La ejecución del mismo será resonsabilidad de quién lo haga.
+
 **Vía `curl`:**
 
 ```bash
@@ -45,13 +51,7 @@ Puedes iniciar la instalción vía línea de comando mendiante el uso de `curl` 
 > sh -c "$(wget https://raw.githubusercontent.com/asumikamikaze/docker-registry/master/installer.sh -O -)"
 ```
 
-> :warning: **ADVERTENCIA**
->
-> Dentro de la estructura se encuentra un archivo llamado `installer.sh`, al ejecutarlo, éste eliminará todo el contenido del directorio `/data/registry/master`.
->
-> La ejecución del mismo será resonsabilidad de quién lo haga.
-
-> :warning: **REQUERIMIENTO:** `curl` o `wget`
+> :information_source: **REQUERIMIENTO:** `curl` o `wget`
 >
 > Instalación `yum install [curl|wget]`.
 
