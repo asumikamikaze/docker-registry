@@ -77,8 +77,10 @@ else
   pth="$(pwd)"
 fi
 
-# cargamos las variables de entorno
+# definimos el path de las variables de entorno
 src_env=$pth/.env
+
+# cargamos las variables de entorno
 if [ -f $src_env ]; then
   source $src_env
 fi
