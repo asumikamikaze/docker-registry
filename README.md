@@ -78,18 +78,21 @@ Para realizar el despliegue **clonamos** el repositorio dentro del servidor que 
   │   │   └── htpasswd
   │   ├── /cache
   │   ├── /data
-  │   └── config.yml
-  ├── docker-compose.yml
-  └── .env
+  │   ├── .env
+  │   ├── config.yml
+  │   ├── docker-compose.yml
+  │   └── purge.sh
+
 ```
 
 * **master**: configuración de la `registry`
     * **auth**: configuración de la `autenticación`, el archivo `htpasswd` contiene todos los usuarios y contraseñas permitidos en la `registry`.
     * **cache**: persistencia del `cache` mediante `redis`.
     * **data**: persistencia de los `repositorios`.
+    * **.env**: configuración de las `variables de entorno` a desplegar.
     * **config.yml**: configuración base.
-* **docker-compose.yml**: configuración de los `servicios` a desplegar.
-* **.env**: configuración de las `variables de entorno` a desplegar.
+    * **docker-compose.yml**: configuración de los `servicios` a desplegar.
+    * **purge.sh**: utilida para el purgado de la `registry`.
 
 ### Compose File
 
