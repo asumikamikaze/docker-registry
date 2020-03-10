@@ -375,4 +375,7 @@ Filename    : /usr/bin/htpasswd
 
 # TODO
 
-* Implementar autenticación por **token**
+* Implementar autenticación por **token**.
+* Desplegar con `swarm` también.
+
+--
