@@ -114,8 +114,6 @@ Para realizar el despliegue **clonamos** el repositorio dentro del servidor que 
 
 Definición de los servicios a desplegar mediante la utilidad `docker-compose`, para mayor información visitar la documentación oficial: https://docs.docker.com/registry/deploying/
 
-#### Servicios
-
 El archivo define básicamente 3 servicios:
 
 * **master** (`registry`) definición de la `registry`.
@@ -125,9 +123,7 @@ El archivo define básicamente 3 servicios:
 * **master_web** (`registry-browser`) interfaz web para la exploración del contenido de la `registry`.
     * https://hub.docker.com/r/klausmeyer/docker-registry-browser/
 
-#### Red
-
-Respecto a la configuración de la red se emplea el modo `externo`, lo que significa que la red debe ser [creada](#creación-de-la-red) antes de desplegar los servicios. Para mayor información visitar la documentación oficial: https://docs.docker.com/compose/compose-file/#external-1
+Respecto a la configuración de red se emplea el modo `externo`, lo que significa que debe ser [creada](#creación-de-la-red) antes de desplegar los servicios. Para mayor información visitar la documentación oficial: https://docs.docker.com/compose/compose-file/#external-1
 
 > `external`
 >
