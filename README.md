@@ -127,7 +127,11 @@ El archivo define básicamente 3 servicios:
 
 #### Red
 
-Respecto a la configuración de la red se emplea el modo `externo`, lo que significa que la red debe ser [creada](#creación-de-la-red) antes de desplegar los servicios. Para mayor información visitar la documentación oficial: https://docs.docker.com/compose/compose-file/#overlay#external-1
+Respecto a la configuración de la red se emplea el modo `externo`, lo que significa que la red debe ser [creada](#creación-de-la-red) antes de desplegar los servicios. Para mayor información visitar la documentación oficial: https://docs.docker.com/compose/compose-file/#external-1
+
+> `external`
+>
+> If set to true, specifies that this network has been created outside of Compose. docker-compose up does not attempt to create it, and raises an error if it doesn’t exist... [read more](https://docs.docker.com/compose/compose-file/#external-1)
 
 ```yaml
 version: '3.4'
