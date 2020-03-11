@@ -48,10 +48,10 @@ Puedes iniciar la instalación vía línea de comando mendiante el uso de `curl`
 > * **Architecture:** x86-64
 >
 > **Software**
-> * **Docker:** 18.09.6, build 481bc77156 (18.09.1 Server Version)
-> * **Docker Compose**: 1.23.2, build 1110ad01
-> * **Git:** 1.8.3.1
-> * **Curl:** 7.29.0
+> * **Docker:** 18.09.6, build 481bc77156 (18.09.1 Server Version) o superior
+> * **Docker Compose**: 1.23.2, build 1110ad01 o superior
+> * **Git:** 1.8.3.1 o superior
+> * **Curl:** 7.29.0 o superior
 >
 > Se asume que los requerimientos básicos ya se encuentran instalados.
 
