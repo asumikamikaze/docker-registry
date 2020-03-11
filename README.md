@@ -31,13 +31,20 @@ El signo `mayor` (`>`) **NO** se debe incluir, éste indica que la línea debe s
 
 ## Instalación
 
-Puedes iniciar la instalción vía línea de comando mendiante el uso de `curl` o `wget`.
+Puedes iniciar la instalación vía línea de comando mendiante el uso de `curl` o `wget`.
 
 > :warning: **ADVERTENCIA**
 >
 > Al ejecutar el instalador, éste eliminará todo el contenido del directorio `/data/registry/master`.
 >
 > La ejecución del mismo será resonsabilidad de quién lo haga.
+
+> :information_source: **ESPECIFICACIONES:**
+>
+> * **Virtualization:** vmware
+> * **Operating System:** CentOS Linux 7 (Core)
+> * **Kernel:** Linux 3.10.0-862.3.2.el7.x86_64
+> * **Architecture:** x86-64
 
 **Vía `curl`:**
 
