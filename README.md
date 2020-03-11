@@ -80,7 +80,7 @@ https://github.com/asumikamikaze/docker-registry
 Para realizar el despliegue **clonamos** el repositorio dentro del servidor que posea `docker`:
 
 ```bash
-> git clone https://github.com/asumikamikaze/docker-registry.git
+> git clone -b master --single-branch https://github.com/asumikamikaze/docker-registry.git
 ```
 
 ## Estructura del Repositorio
