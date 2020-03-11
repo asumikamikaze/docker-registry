@@ -5,7 +5,7 @@ Configuración de una `registry` privada para `desarrollo`.
 ## Index
 
 * **[Registry](#rotating_light-importante-rotating_light)**
-    * **[Instalación](#instalacion)**
+    * **[Instalación](#instalación)**
     * **[Repositorio](#repositorio)**
     * **[Estructura del Repositorio](#estructura-del-repositorio)**
         * [Compose File](#compose-file)
@@ -210,6 +210,8 @@ redis:
 
 La gestión de las crendenciales se realiza mediante la utilidad de apache `htpasswd`, para mayor información visitar la documentación oficial: https://httpd.apache.org/docs/current/programs/htpasswd.html
 
+> En el apartado de `troubleshooting` se explica brevemente como [instalar htpasswd](#instalar-htpasswd)
+
 ### Creación de un usuario
 
 ```bash
@@ -239,7 +241,6 @@ Deleting password for user <username>
 | **username** | **password** |
 | --- | --- |
 | **admin** | `admin` |
-| **...** | `...` |
 
 Verificación de los usuarios habilitados:
 
