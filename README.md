@@ -7,7 +7,7 @@ Configuración de una `registry` privada para `desarrollo`.
 * **[Registry](#rotating_light-importante-rotating_light)**
     * **[Instalación](#instalación)**
     * **[Repositorio](#repositorio)**
-    * **[Estructura del Proyecto](#estructura-del-proyecto)**
+    * **[Estructura](#estructura)**
         * [Compose File](#compose-file)
         * [Env (environment) File](#env-environment-file)
         * [Config File](#config-file)
@@ -83,7 +83,7 @@ Para realizar el despliegue **clonamos** el repositorio dentro del servidor que 
 > git clone -b master --single-branch https://github.com/asumikamikaze/docker-registry.git
 ```
 
-## Estructura del Proyecto
+## Estructura
 
 El directorio de trabajo será establecido en la siguiente ruta: `/data/registry`
 
