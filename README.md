@@ -114,6 +114,8 @@ Para realizar el despliegue **clonamos** el repositorio dentro del servidor que 
 
 Definición de los servicios a desplegar mediante la utilidad `docker-compose`, para mayor información visitar la documentación oficial: https://docs.docker.com/registry/deploying/
 
+#### Servicios
+
 El archivo define básicamente 3 servicios:
 
 * **master** (`registry`) definición de la `registry`.
@@ -122,6 +124,10 @@ El archivo define básicamente 3 servicios:
     * https://hub.docker.com/_/redis
 * **master_web** (`registry-browser`) interfaz web para la exploración del contenido de la `registry`.
     * https://hub.docker.com/r/klausmeyer/docker-registry-browser/
+
+#### Red
+
+Respecto a la configuración de la red se emplea el modo `externo`, lo que significa que la red debe ser [creada](#creación-de-la-red) antes de desplegar los servicios. Para mayor información visitar la documentación oficial: https://docs.docker.com/compose/compose-file/#overlay#external-1
 
 ```yaml
 version: '3.4'
@@ -267,7 +273,7 @@ Verificación de los usuarios habilitados:
 La red es creada por el instalador, en caso de no utilizar este la misma puede ser creada de la siguiente manera.
 
 ```bash
-docker network create --subnet=172.100.0.0/24 --driver=bridge registry
+> docker network create --subnet=172.100.0.0/24 --driver=bridge registry
 ```
 
 ## Iniciar los servicios
