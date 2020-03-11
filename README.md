@@ -31,13 +31,13 @@ El signo `mayor` (`>`) **NO** se debe incluir, éste indica que la línea debe s
 
 ## Instalación
 
-Puedes iniciar la instalación vía línea de comando mendiante el uso de `curl` o `wget`.
-
 > :warning: **ADVERTENCIA**
 >
 > Al ejecutar el instalador, éste eliminará todo el contenido del directorio `/data/registry/master`.
 >
 > La ejecución del mismo será resonsabilidad de quién lo haga.
+
+Puedes iniciar la instalación vía línea de comando mendiante el uso de `curl` o `wget`.
 
 **Vía `curl`:**
 
