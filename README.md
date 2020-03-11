@@ -39,7 +39,19 @@ Puedes iniciar la instalación vía línea de comando mendiante el uso de `curl`
 >
 > La ejecución del mismo será resonsabilidad de quién lo haga.
 
-> :information_source: **ESPECIFICACIONES:**
+**Vía `curl`:**
+
+```bash
+> sh -c "$(curl -fsSL https://raw.githubusercontent.com/asumikamikaze/docker-registry/master/installer.sh)"
+```
+
+**Vía `wget`:**
+
+```bash
+> sh -c "$(wget https://raw.githubusercontent.com/asumikamikaze/docker-registry/master/installer.sh -O -)"
+```
+
+> :white_check_mark: **ESPECIFICACIONES:**
 >
 > **Host**
 > * **Virtualization:** vmware
@@ -54,18 +66,6 @@ Puedes iniciar la instalación vía línea de comando mendiante el uso de `curl`
 > * **Curl:** `7.29.0` o superior
 >
 > Se asume que los requerimientos básicos ya se encuentran instalados.
-
-**Vía `curl`:**
-
-```bash
-> sh -c "$(curl -fsSL https://raw.githubusercontent.com/asumikamikaze/docker-registry/master/installer.sh)"
-```
-
-**Vía `wget`:**
-
-```bash
-> sh -c "$(wget https://raw.githubusercontent.com/asumikamikaze/docker-registry/master/installer.sh -O -)"
-```
 
 > :information_source: **REQUERIMIENTO:** `curl` o `wget`
 >
