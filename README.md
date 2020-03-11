@@ -415,4 +415,4 @@ Filename    : /usr/bin/htpasswd
 
 --
 
-> (C) 2020 | ak | asumikamikaze.com
+> ak | asumikamikaze.com (C) 2020
