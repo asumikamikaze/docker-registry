@@ -1,4 +1,4 @@
-# :whale: DOCKER REGISTRY
+# :whale: DOCKER REGISTRY (:es:)
 
 Configuración de una `registry` privada para `desarrollo`.
 
