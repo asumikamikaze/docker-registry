@@ -262,6 +262,14 @@ Verificación de los usuarios habilitados:
 
 # :wrench: TROUBLESHOOTING
 
+## Creación de la red
+
+La red es creada por el instalador, en caso de no utilizar este la misma puede ser creada de la siguiente manera.
+
+```bash
+docker network create --subnet=172.100.0.0/24 --driver=bridge registry
+```
+
 ## Iniciar los servicios
 
 ```bash
