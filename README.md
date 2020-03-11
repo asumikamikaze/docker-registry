@@ -41,10 +41,19 @@ Puedes iniciar la instalación vía línea de comando mendiante el uso de `curl`
 
 > :information_source: **ESPECIFICACIONES:**
 >
+> **Host**
 > * **Virtualization:** vmware
 > * **Operating System:** CentOS Linux 7 (Core)
 > * **Kernel:** Linux 3.10.0-862.3.2.el7.x86_64
 > * **Architecture:** x86-64
+>
+> **Software**
+> * **Docker:** 18.09.6, build 481bc77156 (18.09.1 Server Version)
+> * **Docker Compose**: 1.23.2, build 1110ad01
+> * **Git:** 1.8.3.1
+> * **Curl:** 7.29.0
+>
+> Se asume que los requerimientos básicos ya se encuentran instalados.
 
 **Vía `curl`:**
 
