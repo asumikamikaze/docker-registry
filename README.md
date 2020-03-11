@@ -7,7 +7,7 @@ Configuración de una `registry` privada para `desarrollo`.
 * **[Registry](#rotating_light-importante-rotating_light)**
     * **[Instalación](#instalación)**
     * **[Repositorio](#repositorio)**
-    * **[Estructura del Repositorio](#estructura-del-repositorio)**
+    * **[Estructura del Proyecto](#estructura-del-proyecto)**
         * [Compose File](#compose-file)
         * [Env (environment) File](#env-environment-file)
         * [Config File](#config-file)
@@ -83,16 +83,19 @@ Para realizar el despliegue **clonamos** el repositorio dentro del servidor que 
 > git clone -b master --single-branch https://github.com/asumikamikaze/docker-registry.git
 ```
 
-## Estructura del Repositorio
+## Estructura del Proyecto
+
+El directorio de trabajo será establecido en la siguiente ruta: `/data/registry`
 
 ```bash
-> tree -a --dirsfirst
+> tree -a --dirsfirst /data/registry
 
   /data/registry
   ├── /master
   │   ├── /auth
   │   │   └── htpasswd
   │   ├── /cache
+  │   ├── /certs
   │   ├── /data
   │   ├── .env
   │   ├── config.yml
@@ -104,6 +107,7 @@ Para realizar el despliegue **clonamos** el repositorio dentro del servidor que 
 * **master**: configuración de la `registry`
     * **auth**: configuración de la `autenticación`, el archivo `htpasswd` contiene todos los usuarios y contraseñas permitidos en la `registry`.
     * **cache**: persistencia del `cache` mediante `redis`.
+    * **certs**: certificados para la configuración del `ssl`.
     * **data**: persistencia de los `repositorios`.
     * **.env**: configuración de las `variables de entorno` a desplegar.
     * **config.yml**: configuración base.
